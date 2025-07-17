@@ -1,0 +1,30 @@
+1. redux is predicatble statecontainer for js apps
+2. redux is a state container
+3. redux stores the state of our application
+
+why to use redux
+1. to manage the global state of your application in predictable way (e.g. in todo task can go from pending => completed)
+
+
+why redux tool kit
+1.to configure redux in applications seems complicated.
+2.redux requires toomuch boilerplate completed
+3. we need to install a lot ofother packages to get redux  to do.
+
+
+* react-redux is a library with help of that functions we can connect our react to rtk 
+
+
+
+1. store - holds the state ofour application
+2. action - it describes what happened in application
+3. reducer - it handles the action and decides how to update state 
+
+
+//steps to create redux
+1. create action
+2. create reducer - it will aceept two arguments reducer and state
+3. create store using createStore() method from redux 
+4 . it accept reducer as a argument which menas it holds the state of our application
+5. subscribe to the redux
+6 . unsubscribes to the redux 
