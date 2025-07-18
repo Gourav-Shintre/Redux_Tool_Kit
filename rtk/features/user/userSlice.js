@@ -1,0 +1,40 @@
+const { createSlice } = require("@reduxjs/toolkit");
+const { createAsyncThunk } = require("@reduxjs/toolkit");
+const axios = require("axios");
+const initialState = {
+  loading: false,
+  user: [],
+  error: "",
+};
+
+//first is action name  and second argument call back function which creates payload
+//createasynchthunk will return dispatch
+const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
+  axios
+    .get("https://jsonplaceholder.typicode.com/users")
+    .then((res) => res.data.map((user) => user.id));
+});
+
+//promise is pending , fullfilled and rejected 
+const userSlice = createSlice({
+  name: "user",
+  initialState,
+  extraReducers: (builder) => {
+    builder.addCase(fetchUsers.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchUsers.fulfilled, (state, action) => {
+      (state.loading = false),
+        (state.user = action.payload),
+        (state.error = "");
+    });
+    builder.addCase(fetchUsers.rejected, (state, action) => {
+      (state.loading = false),
+        (state.user = []),
+        (state.error = action.payload);
+    });
+  },
+});
+
+
+m

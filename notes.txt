@@ -28,3 +28,94 @@ why redux tool kit
 4 . it accept reducer as a argument which menas it holds the state of our application
 5. subscribe to the redux
 6 . unsubscribes to the redux 
+
+
+
+
+rtk ---------------
+
+You imported createSlice from @reduxjs/toolkit.
+
+Using createSlice, you created a cakeSlice by passing an object that contains:
+
+    The name of the slice,
+
+    The initialState,
+
+    A reducers object.
+
+Inside the reducers object, you defined functions like ordered and restock. These functions receive state and action, and you can directly modify the state without returning a new one because Immer is used internally.
+
+Finally, you exported:
+
+    The cakeSlice.reducer as the default reducer,
+
+    And the generated actions from cakeSlice.actions to use in your application.
+
+
+----------------------------------------Keyword-------------------------------
+createSlice()	Creates reducer + actions
+configureStore()	Creates the store
+store.dispatch()	Triggers an action
+store.getState()	Reads the current state
+store.subscribe()	Listens for state changes
+
+
+------------------------------------rtk setup and installation---------------------------
+
+1. Install Redux Toolkit
+
+Install @reduxjs/toolkit package using npm or yarn.
+2. Create a Slice
+
+    A slice represents a part of the Redux state.
+
+    It includes:
+
+        A name
+
+        An initial state
+
+        Reducer functions (which describe how the state is updated)
+
+    Redux Toolkit automatically generates action creators for each reducer.
+
+3. Export Reducer and Actions
+
+    Export the reducer from the slice so it can be added to the store.
+
+    Export the generated actions so they can be dispatched later.
+
+4. Create the Store
+
+    Use configureStore() to create the Redux store.
+
+    Add your slice reducers to the store using the reducer field.
+
+5. Access and Modify State
+
+    Use store.getState() to read the current state.
+
+    Use store.dispatch(action) to update the state.
+
+    Use store.subscribe() to listen to state updates whenever actions are dispatched.
+
+6. Dispatch Actions
+
+    Call the generated action creators using dispatch() to change the state.
+
+    These actions trigger the reducers to modify the state accordingly.
+
+7. Unsubscribe if Needed
+
+    You can stop listening to state changes by calling the unsubscribe function returned by store.subscribe().
+
+
+
+-----------------extra redubcer
+
+"extraReducers allows my slice to listen and respond to external actions like async thunks."
+
+"It's especially useful when handling the lifecycle (pending, fulfilled, rejected) of API calls using createAsyncThunk."
+
+"It gives my slice flexibility to work with actions it didn’t directly define."
