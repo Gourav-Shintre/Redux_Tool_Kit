@@ -3,15 +3,18 @@ const { cakeActions } = require("../rtk/features/cake/cakeSlice");
 
 const { icecreamActions } = require("../rtk/features/icecream/icecreamslice");
 
-// console.log("inittial state", store.getState());
+const { fetchUsers } = require("../rtk/features/user/userSlice");
+console.log("inittial state", store.getState());
 
 const unsubscribe = store.subscribe(() => {
-//   console.log("updated state", store.getState());
+  console.log("updated state", store.getState());
 });
 
-store.dispatch(cakeActions.ordered(3));
-store.dispatch(cakeActions.restock(10));
+// store.dispatch(cakeActions.ordered(3));
+// store.dispatch(cakeActions.restock(10));
 
-store.dispatch(icecreamActions.orderIcecream(15));
+// store.dispatch(icecreamActions.orderIcecream(15));
 
-unsubscribe();
+store.dispatch(fetchUsers());
+
+// unsubscribe();

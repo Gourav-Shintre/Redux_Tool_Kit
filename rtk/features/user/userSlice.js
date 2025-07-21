@@ -10,12 +10,12 @@ const initialState = {
 //first is action name  and second argument call back function which creates payload
 //createasynchthunk will return dispatch
 const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
-  axios
+  return axios
     .get("https://jsonplaceholder.typicode.com/users")
     .then((res) => res.data.map((user) => user.id));
 });
 
-//promise is pending , fullfilled and rejected 
+//promise is pending , fullfilled and rejected
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -36,5 +36,5 @@ const userSlice = createSlice({
   },
 });
 
-
-m
+module.exports = userSlice.reducer;
+module.exports.fetchUsers = fetchUsers;
